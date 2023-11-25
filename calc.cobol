@@ -12,7 +12,9 @@
        01 Oper PIC X.
        01 PromptMsg PIC X(40) VALUE "Enter Number: ".
        01 ErrorMsg PIC X(40) VALUE "INVALID NUMBER".
-      * Data division for variables. Workstorage for temp variables. Num1 and Num2 for numbers, result for combined numbers, oper for operator, and the messages.
+      * Data division for variables. Workstorage for temp variables. Num1 and 
+      * Num2 for numbers, result for combined numbers, oper for operator, and 
+      * messages.
 
        PROCEDURE DIVISION.
            DISPLAY PromptMsg ACCEPT Num1
@@ -21,23 +23,25 @@
            DISPLAY "Select operation (+, -, *, /): " ACCEPT Oper
       * Display operation selection, and accept into oper.
 
-      EVAULATE Oper
-      WHEN '+'
-ADD Num1 TO Num2 GIVING Result
-      DISPLAY "Result: " Result
-      * If plus is chosen, add nums together and make it result and display with text. Repeat for rest
+           EVALUATE Oper
+ 
+           WHEN '+'
+           ADD Num1 TO Num2 GIVING Result
+           DISPLAY "Result: " Result
+      * If plus is chosen, add nums together and make it result and display.
+           WHEN '-'
+           SUBTRACT Num1 FROM Num2 GIVING Result
+           DISPLAY "Result: " Result
 
-WHEN '-'
-      SUBTRACT Num1 TO Num2 GIVING Result
-      DISPLAY "Result: " Result
+           WHEN '*'
+           MULTIPLY Num1 BY Num2 GIVING Result
+           DISPLAY "Result: " Result
 
-WHEN '*'
-      MULTIPLY Num1 TO Num2 GIVING Result
-      DISPLAY "Result: " Result
-
-WHEN '/'
-    IF Num2 = 0
-    DISPLAY "You can't divide by zero, buddy"
-    ELSE
-      DIVIDE Num1 TO Num2 GIVING Result
-      DISPLAY "Result: " Result
+           WHEN '/'
+           IF Num2 = 0
+           DISPLAY "You can't divide by zero, buddy"
+ELSE
+           DIVIDE Num1 BY Num2 GIVING Result
+           DISPLAY "Result: " Result
+           END-IF
+           
