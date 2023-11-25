@@ -4,3 +4,5 @@ AUTHOR. Keith Floyd.
 DATE-WRITTEN. 2023-11-24.
       * Identification division for identification and documentation
 
+DATA DIVISION.
+WORKING-STORAGE SECTION.
