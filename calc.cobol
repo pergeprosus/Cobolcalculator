@@ -44,4 +44,11 @@ ELSE
            DIVIDE Num1 BY Num2 GIVING Result
            DISPLAY "Result: " Result
            END-IF
-           
+
+      * If the 2nd num is zero, dont let divide. otherwise, go ahead
+           WHEN OTHER
+           DISPLAY ErrorMsg
+      * If entry is not valid, display the error message
+           END-EVALUATE
+           STOP RUN.
+      * End the evaluation, stop program with stop run
